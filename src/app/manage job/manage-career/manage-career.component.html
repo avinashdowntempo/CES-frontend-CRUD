@@ -1,0 +1,161 @@
+
+<div style="padding-left: 0px;padding: 0px;" class="container col-md-12">
+<div *ngFor="let career of careers" class="panel panel-default">
+  <div class="panel-body">
+    {{career.title}}<span (click)="onDelete(career)" class="glyphicon glyphicon-remove pull-right" aria-hidden="true"></span><span class="pull-right">&nbsp;&nbsp;</span>
+    <span (click)="onSelect(career)" class="glyphicon glyphicon-pencil pull-right" aria-hidden="true"></span>
+   
+    <div  *ngIf="career === selected" class="container col-md-12">
+    <br>
+             <div class="container col-md-12">
+  <form id="target" class="{{career._id}}" (submit)="onClick($event)">
+<div class="container col-md-6 pull-left">
+
+  <!--title-group-->
+    <div class="form-group">
+<label for="title">Title:</label>
+  <input id="title" [value]="career.title" class="form-control" type="text" name="title" required>
+      </div>
+      <!--title-group-->
+
+<!--technology-group-->
+<div class="form-group">
+  <label>Technology 1:</label>
+  <input class="technology form-control" [value]="career.technology[0]== undefined?'':career.technology[0]" type="text" name="technology" required>
+  <label>Technology 2:</label>
+  <input class="technology form-control" [value]="career.technology[1]== undefined?'':career.technology[1]" type="text" name="technology">
+  <label>Technology 3:</label>
+  <input class="technology form-control" [value]="career.technology[2]== undefined?'':career.technology[2]" type="text" name="technology">
+  <label>Technology 4:</label>
+  <input class="technology form-control" [value]="career.technology[3]== undefined?'':career.technology[3]" type="text" name="technology">
+  <label>Technology 5:</label>
+  <input class="technology form-control" [value]="career.technology[4]== undefined?'':career.technology[4]" type="text" name="technology">
+</div>
+<!--technology-group-->
+
+
+<!--parent group-->
+<div class="form-group">
+  <!--city group-->
+<div class="city">
+<label>City: </label>
+<select size="1" id="rank" [value]="career.city" class="form-control" type="select" name="Rank" (change)="onChange($event.target.value)">
+    <option>choose-your-city</option>
+    <option value="chennai">chennai</option>
+    <option value="Hyderabad">Hyderabad</option>
+    <option value="vizag">vizag</option>
+    <option value="vijayawada">vijayawada</option>
+</select>
+</div>
+
+<!--city group-->
+
+<!--sub city group-->
+<div *ngIf="city === 'chennai'" class="style-sub-1 chennai" name="stylesub1">
+  <label>location:</label>
+  <div class="dropdown">
+    <select id="chennai" [value]="location" class="form-control" name="chennai">    
+      <option value="Navallur">Navallur</option>
+      <option value="Nungambakkam">Nungambakkam</option>      
+    </select>
+    </div>
+</div>
+<div *ngIf="city === 'Hyderabad'" class="style-sub-1 Hyderabad" name="stylesub1">
+  <label>location</label>
+  <div class="dropdown">
+    <select id="Hyderabad" [value]="location" class="form-control" name="Hyderabad">
+      <option value="Banjara hills">Banjara hills</option>
+      <option value="Gachi bowli">Gachi bowli</option>     
+    </select>
+    </div>
+</div>
+<div *ngIf="city === 'vizag'" class="style-sub-1 vizag" name="stylesub1">
+  <label>location </label>
+  <div class="dropdown">
+    <select id="vizag" [value]="location" class="form-control" name="vizag">   
+       <option value="vizag">vizag</option>
+    </select>
+  </div>
+</div>
+<div *ngIf="city === 'vijayawada'" class="style-sub-1 vijayawada" name="stylesub1">
+  <label>location </label>
+  <div class="dropdown">
+    <select id="vijayawada" [value]="location" class="form-control" name="vijayawada">
+      <option value="Gannavaram">Gannavaram</option>
+    </select>
+  </div>
+</div>
+<!--sub city group-->
+</div>
+<!--parent group-->
+</div>
+
+<!--group-start-->
+<div class="container col-md-6 pull-right">
+
+  <!--min-exp-group-->
+  <div class="form-group">
+ <label for="minexp">Min exp:</label>
+  <div class="dropdown">
+    <select id="minexp" [value]="career.minexp" class="form-control" name="minye">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="4">5</option>
+    <option value="4">6</option>
+    <option value="4">7</option>
+    <option value="4">8</option>
+    <option value="4">9</option>
+  </select>
+  </div>
+</div>
+<!--min-exp-group-->
+
+<!--max-exp-group-->
+<div class="form-group">
+   <label for="maxexp">Max exp:</label>
+   <div class="dropdown">
+    <select id="maxexp" [value]="career.maxexp" class="form-control" name="maxye">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select>
+   </div>
+</div>
+<!--max-exp-group-->
+
+<div class="form-group">
+   <label for="description">Description:</label><textarea id="description" [value]="career.description" class="form-control" name="description" rows="10" cols="70" required></textarea>
+</div>
+
+<div class="form-group">
+   <label for="email">Email:</label><input id="email" [value]="career.email" class="form-control" type="email" name="email" required>
+</div>
+
+    <input class="btn btn-success" type="submit" value="update">
+    <input type="reset" class="btn btn-warning">
+
+    </div>
+    <!--group-end-->
+
+</form>
+
+<div id="dialog" style="visibility: hidden" title="Basic dialog">
+  <p style="color:blue">posted successfully</p>
+</div>
+
+
+</div>
+</div>
+  </div>
+</div>
+  </div>
+
