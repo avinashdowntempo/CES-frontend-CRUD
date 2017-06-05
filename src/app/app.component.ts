@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  logout() {
+      window.location.replace("http://localhost:3000/logout");
+  }
 }

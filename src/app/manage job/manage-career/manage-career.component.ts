@@ -73,7 +73,7 @@ $.ajax({
     success: function(data){
         alert('deleted');
         console.log(JSON.stringify(this.career));
-         window.location.replace("http://localhost:4200/MANAGECAREER");
+         window.location.replace("http://localhost:3000");
     },
     error:function(){
         alert('sorry could not update some error occured');
@@ -85,8 +85,23 @@ $.ajax({
 }
 
 
+onDeletemulti(){
+    var a=[];
+     var checkboxes = document.getElementsByName('delete');
+     for(var i=0, n=checkboxes.length;i<n;i++) {
+         if((<HTMLInputElement>checkboxes[i]).checked){
+               a.push((<HTMLInputElement>checkboxes[i]).value);               
+         }
+  }
+           console.log(a);
+}
 
-
+addprop(event){
+    var checkboxes = document.getElementsByName('delete');
+     for(var i=0, n=checkboxes.length;i<n;i++) {
+    (<HTMLInputElement>checkboxes[i]).checked = event.target.checked;
+  }
+}
 
 
 //formormofmormomormocmodm
@@ -145,7 +160,7 @@ $.ajax({
     success: function(data){
         alert('updated');
         console.log(JSON.stringify(this.career));
-         window.location.replace("http://localhost:4200/MANAGECAREER");
+         window.location.replace("http://localhost:3000");
     },
     error:function(){
         alert('sorry could not update some error occured');

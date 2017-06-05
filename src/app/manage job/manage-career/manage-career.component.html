@@ -1,9 +1,12 @@
 
 <div style="padding-left: 0px;padding: 0px;" class="container col-md-12">
+  <div class="deleteicon"><span (click)="onDeletemulti()" class="glyphicon glyphicon-remove pull-right deleteall" aria-hidden="true"></span>
+  <input class="pull-right" (change)="addprop($event)" type="checkbox" name="deleteall" value="{{career._id}}"><span>&nbsp;&nbsp;</span></div>
 <div *ngFor="let career of careers" class="panel panel-default">
   <div class="panel-body">
     {{career.title}}<span (click)="onDelete(career)" class="glyphicon glyphicon-remove pull-right" aria-hidden="true"></span><span class="pull-right">&nbsp;&nbsp;</span>
     <span (click)="onSelect(career)" class="glyphicon glyphicon-pencil pull-right" aria-hidden="true"></span>
+    <input class="pull-right" type="checkbox" name="delete" value="{{career._id}}"><span>&nbsp;&nbsp;</span>
    
     <div  *ngIf="career === selected" class="container col-md-12">
     <br>

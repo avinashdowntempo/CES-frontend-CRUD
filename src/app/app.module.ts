@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { ManageCareerComponent } from './manage job/manage-career/manage-career.component';
 
 const appRoutes: Routes = [
+  { path: '', redirectTo: '/MANAGECAREER', pathMatch: 'full' },
   { path: 'NEWCAREER', component: NewCareerComponent},
   { path: 'MANAGECAREER', component: ManageCareerComponent },
   { path: 'RELOAD', component: ManageCareerComponent }
