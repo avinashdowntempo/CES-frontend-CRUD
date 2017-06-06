@@ -95,7 +95,9 @@ onDeletemulti(){
          if((<HTMLInputElement>checkboxes[i]).checked){
                del.push((<HTMLInputElement>checkboxes[i]).value);
          }
-  }
+  } 
+  if(del.length!=0)
+  {
      a={
          del:del
      }
@@ -109,13 +111,18 @@ onDeletemulti(){
             contentType: "application/json; charset=utf-8",
             traditional: true,
             success: function(data){
-        alert('updated');
+        alert('deleted');
         console.log(JSON.stringify(this.career));
+        window.location.replace("http://localhost:3000");
     },
     error:function(){
         alert('sorry could not update some error occured');
     }
 });
+}
+else{
+    alert ("no value selected");
+}
 }
 
 addprop(event){
