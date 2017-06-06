@@ -86,14 +86,36 @@ $.ajax({
 
 
 onDeletemulti(){
-    var a=[];
+    var del=[];
+      var a:{
+        del:string[]
+    }
      var checkboxes = document.getElementsByName('delete');
      for(var i=0, n=checkboxes.length;i<n;i++) {
          if((<HTMLInputElement>checkboxes[i]).checked){
-               a.push((<HTMLInputElement>checkboxes[i]).value);               
+               del.push((<HTMLInputElement>checkboxes[i]).value);
          }
   }
+     a={
+         del:del
+     }
            console.log(a);
+           var delmulti=JSON.stringify(a);
+           console.log(delmulti);
+           $.ajax({
+            type:'POST',
+            url:'http://localhost:3000/delmulti',
+            data:delmulti,
+            contentType: "application/json; charset=utf-8",
+            traditional: true,
+            success: function(data){
+        alert('updated');
+        console.log(JSON.stringify(this.career));
+    },
+    error:function(){
+        alert('sorry could not update some error occured');
+    }
+});
 }
 
 addprop(event){
